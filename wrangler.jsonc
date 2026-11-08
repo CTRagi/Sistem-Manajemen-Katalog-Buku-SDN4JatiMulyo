@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "perpustakaan-sd",
+  "main": "src/worker.py",
+  "compatibility_date": "2026-11-04",
+  "compatibility_flags": ["python_workers"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "perpustakaan-sd",
+      "database_id": "ISI_SETELAH_d1_create"
+    }
+  ]
+}
