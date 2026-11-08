@@ -1,0 +1,11 @@
+# rahasia & data lokal (JANGAN diunggah)
+.dev.vars
+.wrangler/
+
+# lingkungan & dependensi (dibuat ulang otomatis)
+.venv/
+.venv-workers/
+python_modules/
+node_modules/
+__pycache__/
+*.pyc
