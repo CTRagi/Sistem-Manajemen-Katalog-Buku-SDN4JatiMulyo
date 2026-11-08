@@ -1,16 +1,11 @@
-# Virtual Environments & Modules
+# rahasia & data lokal (JANGAN diunggah)
+.dev.vars
+.wrangler/
+
+# lingkungan & dependensi (dibuat ulang otomatis)
 .venv/
 .venv-workers/
 python_modules/
-
-# Cloudflare Wrangler Cache
-.wrangler/
-
-# Sensitive Credentials / Secrets
-.dev.vars
-.env
-*.pem
-
-# Python Cache
+node_modules/
 __pycache__/
-*.py[cod]
+*.pyc
