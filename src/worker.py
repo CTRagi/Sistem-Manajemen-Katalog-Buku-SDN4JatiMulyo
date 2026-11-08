@@ -29,6 +29,12 @@ PILL = {"Kembali": "ok", "Dipinjam": "warn", "Terlambat": "bad"}
 PER_HAL, PER_ANGGOTA = 24, 50
 BATAS_LOGIN = {"up": 5, "ip": 20}   # gagal beruntun per (pengguna+IP) dan per IP
 JENDELA = KUNCI = 15 * 60           # detik: jendela hitung gagal & lama terkunci
+# ---------- identitas sekolah (tampil di header & footer) ----------
+NAMA_SEKOLAH = "SD Negeri 4 Jati Mulyo"
+ALAMAT_SEKOLAH = "Jl. Suttan Pesirah Jatisari, Kec. Jati Agung, Kab. Lampung Selatan, Prov. Lampung"
+JAM_LAYANAN = "Senin sampai Jumat"
+LOGO_URL = "/logo.png"     # mis. "/logo.png"  (file ditaruh di folder public/)
+LATAR_URL = "/latar.jpg"    # mis. "/latar.jpg" (file ditaruh di folder public/)
 BUKU_SQL = ("SELECT b.*, b.stok - (SELECT COUNT(*) FROM transaksi t "
             "WHERE t.buku_id = b.id AND t.tgl_kembali IS NULL) AS tersedia FROM buku b")
 
@@ -54,6 +60,11 @@ def run(sql, *args):
 
 def today():
     return datetime.now(TZ).date()
+
+@app.context_processor
+def identitas():
+    return {"sekolah": {"nama": NAMA_SEKOLAH, "alamat": ALAMAT_SEKOLAH, "jam": JAM_LAYANAN},
+            "logo_url": LOGO_URL, "latar_url": LATAR_URL}
 
 @app.template_filter("rupiah")
 def rupiah(n):
@@ -241,7 +252,7 @@ def landing():
     total = sel(f"SELECT COUNT(*) AS n FROM {src}{where}", *args)[0]["n"]
     buku = sel(f"SELECT * FROM {src}{where} ORDER BY judul LIMIT ? OFFSET ?", *args, PER_HAL, (hal - 1) * PER_HAL)
     for b in buku:
-        b["hue"] = int(hashlib.sha256(b["kode"].encode()).hexdigest()[:4], 16) % 360
+        b["v"] = int(hashlib.sha256(b["kode"].encode()).hexdigest()[:4], 16) % 3  # varian warna punggung buku
     base = {"q": q, "kat": kat, "tampil": "semua" if semua else ""}
     kats = sel("SELECT kategori, COUNT(*) AS n FROM buku WHERE kategori != '' GROUP BY kategori ORDER BY kategori")
     for k in kats:

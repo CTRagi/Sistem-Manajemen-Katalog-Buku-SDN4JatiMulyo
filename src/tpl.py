@@ -1,78 +1,122 @@
 STYLE = """
-:root{--brand:#2563eb;--ink:#1f2937;--mut:#6b7280;--line:#e5e7eb;--ok:#15803d;--warn:#b45309;--bad:#b91c1c}
+:root{--merah:#900F0F;--merah-tua:#6E0B0B;--merah-muda:#F4DAD6;--krem:#EADBC8;--krem-muda:#F6EEE3;--krem-tua:#D5BFA2;--tinta:#1F2937;--redup:rgba(31,41,55,.72);
+--f-judul:"Fredoka","Trebuchet MS","Segoe UI",system-ui,sans-serif;--f-isi:"Lexend","Segoe UI",system-ui,sans-serif}
 *{box-sizing:border-box}
-body{margin:0;background:#f5f7fb;color:var(--ink);font:16px/1.55 system-ui,"Segoe UI",Roboto,sans-serif}
-nav{background:var(--brand);display:flex;flex-wrap:wrap;gap:4px;align-items:center;padding:8px 16px;color:#fff}
-nav .brand{margin-right:12px;font-size:18px;font-weight:700}
-nav a,nav button{color:#fff;text-decoration:none;padding:8px 12px;border-radius:8px;background:none;border:0;font:inherit;cursor:pointer}
-nav a:hover,nav button:hover{background:rgba(255,255,255,.2)}
-nav form{margin:0}.sp{flex:1}
-main{max-width:1000px;margin:24px auto;padding:0 16px}
-h1,h2{margin:0 0 12px}h1{font-size:24px}
-.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
-.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px}
-.narrow{max-width:520px;margin:0 auto}.scroll{overflow-x:auto;padding:0}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:var(--krem);color:var(--tinta);font:400 16px/1.6 var(--f-isi)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.1;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 420'%3E%3Cg fill='%23900F0F'%3E%3Crect y='400' width='1000' height='8'/%3E%3Crect x='250' y='215' width='500' height='185'/%3E%3Cpolygon points='228,220 500,118 772,220'/%3E%3Crect x='418' y='255' width='164' height='145'/%3E%3Cpolygon points='408,258 500,200 592,258'/%3E%3Crect x='862' y='120' width='7' height='280'/%3E%3Cpolygon points='869,124 940,146 869,168'/%3E%3Ccircle cx='120' cy='320' r='58'/%3E%3Crect x='114' y='360' width='12' height='40'/%3E%3C/g%3E%3Cg fill='%23EADBC8'%3E%3Crect x='482' y='322' width='36' height='78'/%3E%3Crect x='285' y='255' width='46' height='56'/%3E%3Crect x='355' y='255' width='46' height='56'/%3E%3Crect x='599' y='255' width='46' height='56'/%3E%3Crect x='669' y='255' width='46' height='56'/%3E%3C/g%3E%3C/svg%3E") center bottom/min(1100px,100%) no-repeat}
+body.ada-latar::before{opacity:.22;background:var(--latar) center/cover no-repeat}
+header{background:var(--tinta);color:var(--krem);border-bottom:4px solid var(--merah)}
+.hd{max-width:1080px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:14px;color:inherit;text-decoration:none;margin-right:auto}
+.logo{width:56px;height:56px;border-radius:50%;flex:none;object-fit:contain;background:var(--krem);border:3px solid var(--krem)}
+.logo-ph{display:grid;place-items:center;font:700 20px var(--f-judul);color:var(--merah)}
+.brand small{display:block;font-size:13px;color:rgba(234,219,200,.85)}
+.brand b{display:block;font:700 22px/1.2 var(--f-judul);color:var(--krem)}
+.kanan{display:flex;align-items:center;gap:8px;margin-left:auto}.kanan form{margin:0}
+.akun{color:var(--krem);text-decoration:none;font-weight:500;padding:6px 10px;border-radius:99px}.akun:hover{background:rgba(234,219,200,.14)}
+.btn-ol{display:inline-block;padding:7px 16px;border:1.5px solid var(--krem);border-radius:99px;background:none;color:var(--krem);font:500 15px var(--f-isi);text-decoration:none;cursor:pointer}
+.btn-ol:hover{background:var(--krem);color:var(--tinta)}
+.menu{max-width:1080px;margin:0 auto;padding:0 16px 12px;display:flex;gap:6px;overflow-x:auto;white-space:nowrap}
+.menu a{color:var(--krem);text-decoration:none;padding:8px 18px;border-radius:99px;font-weight:500}
+.menu a:hover{background:rgba(234,219,200,.14)}.menu a.on{background:var(--merah);color:#fff}
+header a:focus-visible,header button:focus-visible{outline:3px solid var(--krem);outline-offset:2px}
+main{flex:1;width:100%;max-width:1080px;margin:0 auto;padding:28px 16px 44px}
+h1,h2,h3{margin:0 0 12px;font-family:var(--f-judul);font-weight:700;color:var(--merah);line-height:1.2}
+h1{font-size:30px}h2{font-size:22px}
+.jdl{font:700 17px/1.3 var(--f-judul);color:var(--merah)}.nw{white-space:nowrap}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.card{background:var(--krem-muda);border:1.5px solid var(--krem-tua);border-radius:16px;padding:22px;box-shadow:0 14px 24px -18px rgba(31,41,55,.5)}
+.narrow{max-width:540px;margin:0 auto}.scroll{overflow-x:auto;padding:0}
 table{width:100%;border-collapse:collapse}
-th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-size:13px;color:var(--mut);text-transform:uppercase}small{color:var(--mut)}
-label{display:block;margin-bottom:14px;font-weight:600}
-input,select{display:block;width:100%;margin-top:6px;padding:11px 12px;font:inherit;border:1px solid #cbd5e1;border-radius:8px;background:#fff}
-input:focus,select:focus,a:focus-visible,button:focus-visible{outline:3px solid #bfdbfe;border-color:var(--brand)}
-.btn{display:inline-block;padding:10px 16px;border:0;border-radius:8px;background:var(--brand);color:#fff;font:inherit;font-weight:600;text-decoration:none;cursor:pointer}
-.ghost{background:#e0e7ff;color:#1e3a8a}.danger{background:#fee2e2;color:var(--bad)}.sm{padding:6px 10px;font-size:14px}
-.search{display:flex;gap:8px;margin-bottom:16px}.search input{flex:1;margin:0}.search select{width:auto;margin:0}
-.row{display:flex;gap:10px}.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--krem-tua);vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{font-weight:500;font-size:14px;color:var(--redup);background:rgba(234,219,200,.6)}
+small{color:var(--redup)}a{color:var(--merah)}
+label{display:block;margin-bottom:14px;font-weight:500}
+input,select{display:block;width:100%;margin-top:6px;padding:11px 13px;font:400 16px var(--f-isi);color:var(--tinta);background:#fff;border:1.5px solid var(--krem-tua);border-radius:10px}
+input:focus,select:focus{outline:3px solid rgba(144,15,15,.28);border-color:var(--merah)}
+main a:focus-visible,main button:focus-visible{outline:3px solid rgba(144,15,15,.45);outline-offset:2px}
+.btn{display:inline-block;padding:10px 20px;border:1.5px solid var(--merah);border-radius:12px;background:var(--merah);color:#fff;font:500 16px var(--f-isi);text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--merah-tua);border-color:var(--merah-tua)}
+.ghost{background:var(--krem-muda);border-color:var(--krem-tua);color:var(--tinta)}.ghost:hover{background:var(--krem);border-color:var(--krem-tua)}
+.danger{background:#fff;color:var(--merah)}.danger:hover{background:var(--merah-muda);border-color:var(--merah)}
+.sm{padding:5px 12px;font-size:14px;border-radius:10px}
+.search{display:flex;gap:8px;margin-bottom:18px}.search input{flex:1;margin:0}.search select{width:auto;margin:0}
+.row{display:flex;gap:10px;flex-wrap:wrap}.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .act{white-space:nowrap}.act form{display:inline}
 .act .inl{display:inline-flex;gap:6px}.inl input{width:130px;margin:0;padding:6px 8px}
-.pill{padding:2px 10px;border-radius:99px;font-size:14px;font-weight:600}
-.ok{background:#dcfce7;color:var(--ok)}.warn{background:#fef3c7;color:var(--warn)}.bad{background:#fee2e2;color:var(--bad)}
-.msg{padding:12px 16px;border-radius:8px;margin-bottom:16px;font-weight:600}.msg a{color:inherit}
-.empty{text-align:center;color:var(--mut);padding:32px}
-.hint{color:var(--mut);margin:-6px 0 14px;font-size:14px}
-.pager{display:flex;gap:12px;align-items:center;justify-content:center;margin:24px 0}
-.hero{padding:8px 0 4px}
-.hero h1{font:800 clamp(28px,5vw,40px)/1.15 "Trebuchet MS","Segoe UI",system-ui,sans-serif;color:#14213d;margin:0 0 6px}
-.hero p{margin:0 0 16px;color:var(--mut);max-width:60ch}
-.big{display:flex;gap:8px;max-width:640px}
-.big input{flex:1;margin:0;padding:15px 18px;font-size:18px;border:2px solid #c7d7f5;border-radius:14px}
-.big .btn{padding:0 26px;font-size:18px;border-radius:14px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 8px}
-.chip{padding:6px 14px;border-radius:99px;background:#fff;border:2px solid #c7d7f5;color:#1e3a8a;text-decoration:none;font-weight:700}
-.chip.on{background:#1e3a8a;border-color:#1e3a8a;color:#fff}
-.hasil{margin:8px 0 18px;color:var(--mut)}.hasil a{color:#1e3a8a;font-weight:700}
-.rak{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:20px}
-.buku{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;aspect-ratio:3/4;padding:14px 12px 14px 18px;overflow:hidden;color:#fff;
-background:hsl(var(--h) 55% 30%);border-left:10px solid hsl(var(--h) 55% 21%);border-radius:5px 14px 14px 5px}
-.buku b{font:800 18px/1.2 "Trebuchet MS","Segoe UI",system-ui,sans-serif;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.buku small{color:rgba(255,255,255,.88);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.buku small.info{white-space:normal}
+.pill{display:inline-block;padding:1px 12px;border:1.5px solid transparent;border-radius:99px;font-size:14px;font-weight:500}
+.pill.ok{border-color:var(--tinta);color:var(--tinta)}.pill.warn{background:var(--tinta);color:var(--krem)}.pill.bad{background:var(--merah);color:#fff}
+.msg{padding:13px 16px;border:1.5px solid var(--krem-tua);border-radius:12px;margin-bottom:18px;font-weight:500;background:var(--krem-muda)}
+.msg.ok{border-color:var(--tinta)}.msg.bad{background:var(--merah-muda);border-color:var(--merah);color:var(--merah-tua)}.msg a{color:inherit}
+.empty{text-align:center;color:var(--redup);padding:32px}
+.hint{color:var(--redup);margin:-6px 0 14px;font-size:14px}
+.pager{display:flex;gap:12px;align-items:center;justify-content:center;margin:26px 0}
+.hero{padding:4px 0}
+.hero h1{font-size:clamp(30px,5vw,46px);margin-bottom:8px}
+.hero p{margin:0 0 18px;max-width:58ch}
+.big{display:flex;gap:10px;max-width:660px}
+.big input{flex:1;margin:0;padding:15px 18px;font-size:18px;border-radius:14px}
+.big .btn{padding:0 28px;font-size:18px;border-radius:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 6px}
+.chip{padding:6px 16px;border:1.5px solid var(--krem-tua);border-radius:99px;background:var(--krem-muda);color:var(--tinta);text-decoration:none;font-weight:500}
+.chip:hover{background:#fff}.chip.on{background:var(--merah);border-color:var(--merah);color:#fff}
+.hasil{margin:10px 0 20px;color:var(--redup)}.hasil a{font-weight:500}
+.rak{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:20px}
+.buku{--spine:var(--merah);position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:3px;aspect-ratio:3/4;padding:16px 14px 16px 18px;overflow:hidden;
+background:var(--krem-muda);border:1.5px solid var(--krem-tua);border-left:14px solid var(--spine);border-radius:6px 16px 16px 6px;box-shadow:0 12px 18px -14px rgba(31,41,55,.6)}
+.buku.v1{--spine:var(--tinta)}.buku.v2{--spine:var(--krem-tua)}
+.buku b{font:700 19px/1.2 var(--f-judul);color:var(--merah);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.buku small{font-size:14px;color:var(--tinta);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.buku small.info{white-space:normal;font-size:13px;color:var(--redup)}
 .stiker{position:absolute;top:10px;right:10px;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;text-align:center;
-font-weight:800;font-size:14px;line-height:1.05;background:#fcd34d;color:#3b2f00;transform:rotate(8deg)}
-.stiker.habis{background:#e2e8f0;color:#475569}
-@media(max-width:480px){nav .brand{margin-right:0;font-size:17px}}
+font:500 13px/1.05 var(--f-isi);background:var(--merah);color:#fff;transform:rotate(8deg);box-shadow:0 3px 0 rgba(31,41,55,.25)}
+.stiker.habis{background:var(--krem);color:var(--tinta);border:1.5px solid var(--tinta)}
+footer{background:var(--tinta);color:var(--krem)}
+.ft{max-width:1080px;margin:0 auto;padding:28px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+footer b{display:block;margin-bottom:6px;font:700 18px var(--f-judul)}footer p{margin:2px 0;color:rgba(234,219,200,.9)}
+@media(max-width:480px){.brand b{font-size:19px}.logo{width:48px;height:48px}}
 """
 
 T = {
 "base.html": """<!doctype html>
 <html lang="id"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Perpustakaan SD</title><style>""" + STYLE + """</style></head><body>
-<nav><a class="brand" href="{{ url_for('landing') }}">📚 Perpustakaan SDN 4 Jati Mulyo</a>
-{% if g.user %}
-<a href="{{ url_for('buku_list') }}">Buku</a>
-<a href="{{ url_for('anggota_list') }}">Anggota</a>
-<a href="{{ url_for('pinjam') }}">Pinjam</a>
-<a href="{{ url_for('transaksi') }}">Transaksi</a>
-{% if g.user.role == 'admin' %}<a href="{{ url_for('pengguna') }}">Pengguna</a><a href="{{ url_for('pengaturan') }}">Pengaturan</a>{% endif %}
-<span class="sp"></span><a href="{{ url_for('akun') }}">{{ g.user.nama }}</a>
-<form method="post" action="{{ url_for('logout') }}"><button>Keluar</button></form>
-{% else %}<span class="sp"></span><a href="{{ url_for('login') }}">Masuk petugas</a>{% endif %}
-</nav><main>
+<title>Perpustakaan Sekolah — {{ sekolah.nama }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&amp;family=Lexend:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>""" + STYLE + """</style></head>
+<body{% if latar_url %} class="ada-latar" style="--latar:url('{{ latar_url }}')"{% endif %}>
+<header><div class="hd">
+<a class="brand" href="{{ url_for('landing') }}">
+{% if logo_url %}<img class="logo" src="{{ logo_url }}" alt="Logo sekolah">{% else %}<span class="logo logo-ph">SD</span>{% endif %}
+<span><small>{{ sekolah.nama }}</small><b>Perpustakaan Sekolah</b></span></a>
+<div class="kanan">
+{% if g.user %}<a class="akun" href="{{ url_for('akun') }}">{{ g.user.nama }}</a>
+<form method="post" action="{{ url_for('logout') }}"><button class="btn-ol">Keluar</button></form>
+{% else %}<a class="btn-ol" href="{{ url_for('login') }}">Masuk petugas</a>{% endif %}
+</div></div>
+{% if g.user %}{% set ep = request.endpoint or '' %}
+<nav class="menu" aria-label="Menu petugas">
+<a class="{{ 'on' if ep.startswith('buku') else '' }}" href="{{ url_for('buku_list') }}">Buku</a>
+<a class="{{ 'on' if ep.startswith('anggota') else '' }}" href="{{ url_for('anggota_list') }}">Anggota</a>
+<a class="{{ 'on' if ep == 'pinjam' else '' }}" href="{{ url_for('pinjam') }}">Pinjam</a>
+<a class="{{ 'on' if ep == 'transaksi' else '' }}" href="{{ url_for('transaksi') }}">Transaksi</a>
+{% if g.user.role == 'admin' %}<a class="{{ 'on' if ep == 'pengguna' else '' }}" href="{{ url_for('pengguna') }}">Pengguna</a>
+<a class="{{ 'on' if ep == 'pengaturan' else '' }}" href="{{ url_for('pengaturan') }}">Pengaturan</a>{% endif %}
+</nav>{% endif %}
+</header>
+<main>
 {% set o = request.args.get('ok') %}{% set e = err or request.args.get('err') %}
 {% if o %}<div class="msg ok">{{ o }}</div>{% endif %}
 {% if e %}<div class="msg bad">{{ e }}</div>{% endif %}
 {% block body %}{% endblock %}
-</main></body></html>""",
+</main>
+<footer><div class="ft">
+<div><b>Perpustakaan {{ sekolah.nama }}</b><p>{{ sekolah.alamat }}</p></div>
+<div><b>Layanan</b><p>{{ sekolah.jam }}</p></div>
+</div></footer>
+</body></html>""",
 
 "login.html": """{% extends "base.html" %}{% block body %}
 <div class="card narrow"><h1>Masuk</h1>
@@ -93,7 +137,7 @@ T = {
 {% if belum_setup %}<div class="msg warn">Belum ada akun admin. <a href="{{ url_for('setup') }}">Buat akun admin pertama</a>.</div>{% endif %}
 <section class="hero">
 <h1>Cari buku yang mau kamu baca</h1>
-<p>Catat kode dan rak bukunya, lalu ambil di perpustakaan. Pinjam lewat petugas.</p>
+<p>Catat rak dan kode bukunya, lalu ambil di perpustakaan. Untuk meminjam, temui petugas perpustakaan.</p>
 <form class="big" method="get" role="search">
 <input name="q" value="{{ q }}" placeholder="Judul atau pengarang" aria-label="Cari buku" autofocus>
 {% if kat %}<input type="hidden" name="kat" value="{{ kat }}">{% endif %}{% if semua %}<input type="hidden" name="tampil" value="semua">{% endif %}
@@ -106,7 +150,7 @@ T = {
 <p class="hasil">{{ total }} buku {{ 'ditemukan' if (q or kat) else ('terdaftar' if semua else 'bisa dipinjam sekarang') }}.
 <a href="{{ ganti_tampil }}">{{ 'Tampilkan yang tersedia saja' if semua else 'Tampilkan juga yang sedang dipinjam' }}</a></p>
 <div class="rak">
-{% for b in buku %}<article class="buku" style="--h:{{ b.hue }}">
+{% for b in buku %}<article class="buku v{{ b.v }}">
 <span class="stiker {{ '' if b.tersedia > 0 else 'habis' }}" title="{{ ('Tersedia ' ~ b.tersedia ~ ' eksemplar') if b.tersedia > 0 else 'Semua eksemplar sedang dipinjam' }}">{% if b.tersedia > 0 %}Ada<br>{{ b.tersedia }}{% else %}Habis{% endif %}</span>
 <b>{{ b.judul }}</b>
 {% if b.pengarang %}<small>{{ b.pengarang }}</small>{% endif %}
@@ -128,9 +172,9 @@ T = {
 <div class="card scroll"><table>
 <tr><th>Kode</th><th>Judul</th><th>Pengarang</th><th>Rak</th><th>Tersedia</th><th></th></tr>
 {% for b in buku %}<tr>
-<td>{{ b.kode }}</td>
-<td><strong>{{ b.judul }}</strong><br><small>{{ b.kategori }}</small></td>
-<td>{{ b.pengarang }}</td><td>{{ b.rak }}</td>
+<td class="nw">{{ b.kode }}</td>
+<td><strong class="jdl">{{ b.judul }}</strong><br><small>{{ b.kategori }}</small></td>
+<td>{{ b.pengarang }}</td><td class="nw">{{ b.rak }}</td>
 <td><span class="pill {{ 'ok' if b.tersedia > 0 else 'bad' }}">{{ b.tersedia }} / {{ b.stok }}</span></td>
 <td class="act">
 {% if b.tersedia > 0 %}<a class="btn sm" href="{{ url_for('pinjam', buku=b.id) }}">Pinjam</a>{% endif %}
@@ -217,10 +261,10 @@ document.getElementById('fp').addEventListener('submit',e=>{for(const c of cs)if
 <div class="card scroll"><table>
 <tr><th>Tgl pinjam</th><th>Buku</th><th>Peminjam</th><th>Batas kembali</th><th>Status</th><th></th></tr>
 {% for r in rows %}<tr>
-<td>{{ r.tgl_pinjam }}</td>
-<td><strong>{{ r.judul }}</strong><br><small>{{ r.kode }}</small></td>
+<td class="nw">{{ r.tgl_pinjam }}</td>
+<td><strong class="jdl">{{ r.judul }}</strong><br><small>{{ r.kode }}</small></td>
 <td>{{ r.peminjam }}<br><small>{{ r.kelas }}</small></td>
-<td>{{ r.tgl_jatuh_tempo }}{% if r.tgl_kembali %}<br><small>kembali {{ r.tgl_kembali }}</small>{% endif %}</td>
+<td class="nw">{{ r.tgl_jatuh_tempo }}{% if r.tgl_kembali %}<br><small>kembali {{ r.tgl_kembali }}</small>{% endif %}</td>
 <td><span class="pill {{ r.css }}">{{ r.status }}</span>
 {% if r.denda_now %}<br><small>Denda {{ r.denda_now|rupiah }} ({{ r.telat }} hari){% if r.tgl_kembali %}, {{ 'lunas' if r.denda_lunas else 'belum lunas' }}{% else %}, berjalan{% endif %}</small>{% endif %}</td>
 <td class="act">{% if not r.tgl_kembali %}
